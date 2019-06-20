@@ -1,0 +1,38 @@
+<%- include('./headeradmin'); -%>
+
+<div class="bang-datcho">
+    <h2>Quản Lí Đặt Chỗ</h2></br>
+    <table>
+        <tr>
+            <th>Mã đặt chỗ</th>
+            <th>Người dùng</th>
+            <th>Suất chiếu</th>
+            <th>Thời gian đặt vé</th>
+            <th>Tổng Tiền(VND)</th>
+            <th>Chỉnh sửa</th>
+        </tr>
+        <% for(let i=0 ; i< toanBoDatCho.length; i++) {
+            var datcho = toanBoDatCho[i];
+            %>
+        <tr>
+            <td> <%= datcho.iddatcho %></td>
+
+            <% for(let j=0; j< toanBoNguoiDung.length; j++){ 
+                if(datcho.idnguoidung == toanBoNguoiDung[j].id){
+                %>
+
+                <td>Tên: <%=toanBoNguoiDung[j].name%> </br> (Email:<%= toanBoNguoiDung[j].email %>)  </td>
+
+                <%}} %>
+
+            <td> <%= datcho.idsuatchieu %> </td>
+            <td> <%= datcho.thoigiandatve %>  </td>
+            <td>   <%= datcho.tongtien %></td>
+            <td><button onclick="window.location.href='/admin/xoadatcho/<%=datcho.id %>'" type="submit" class="btn btn-danger">Xóa</button></td>
+        </tr>
+
+        <%} %>
+    </table>
+</div>
+
+<%- include('./footeradmin'); -%>

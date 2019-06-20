@@ -1,0 +1,45 @@
+<%- include('./headeradmin'); -%>
+    <div class="bang-user">
+        <h2>Quản Lí Tài Khoản</h2>
+        </br>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Avatar</th>
+                <th>Email</th>
+                <th>SDT</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+            <% for( let i = 0 ; i < toanBoTaiKhoan.length; i++) {
+                var user = toanBoTaiKhoan[i] %>
+                <tr>
+                    <td>
+                        <%=user.id %>
+                    </td>
+                    <td>
+                        <%=user.name %>
+                    </td>
+                    <td><img src=" <%=im[i] %>" alt="<%=user.name %>"></td>
+                    <td>
+                        <%=user.email %>
+                    </td>
+                    <td>
+                        <%=user.sdt %>
+                    </td>
+                    <%if(user.active == 1){ %>
+                        <td>Đã kích hoạt</td>
+                        <% } else{%>
+                            <td>Chưa kích hoạt</td>
+                            <%}%>
+                    <% if(user.idadmin != 1) {%>        
+                    <td><button onclick="window.location.href='/admin/xoataikhoan/<%=user.id %>'" type="submit" class="btn btn-danger">Xóa</button></td>
+                    <%} else {%>
+                        <td>Không thể xóa</td>
+                        <% }%>
+                </tr>
+                <%} %>
+        </table>
+    </div>
+    <%- include('./footeradmin'); -%>

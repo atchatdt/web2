@@ -1,0 +1,69 @@
+<%- include('./header'); -%>
+
+<% if(mangLoc.length < 1 || locRap.length < 1 || toanBoSuatChieu.length < 1  ){ %>
+
+    <p>Chưa có thông tin</p>
+
+    <%}else { %>
+
+<% for(let i=0; i< mangLoc.length; i++) { 
+    
+    let cumRap = mangLoc[i];
+    %>
+
+
+    <h1>Cụm rạp</h1>
+
+    <p>Tên cụm rap rạp <%=cumRap.tenrap %> </p>
+    <p>Địa chỉ cụm rap <%=cumRap.diachi %> </p>
+    <p>*****************************</p>
+    </br>
+   
+ 
+    <% for(let j=0; j< locRap.length; j++) {
+        
+        let rap = locRap[j];
+
+        if(cumRap.id == rap.idcumrap)
+        {%>
+            <h1>Rạp</h1>
+        <p> Tên rạp <%= rap.name %>  </p>
+        <p>*****************************</p>
+        </br>
+       
+
+        
+            <% for(let k = 0; k < toanBoSuatChieu.length; k++  ){
+                
+                let suatChieu = toanBoSuatChieu[k];
+                if(suatChieu.idrap == rap.id){
+                %>
+                    <h3>Suất chiếu</h3>
+                    <p> Giờ bắt đầu: <%=suatChieu.batdau %></p>
+                    <p> Giá vé: <%=suatChieu.giave %> VNĐ</p>
+                    <p>*****************************</p>
+                    
+                   
+                    
+                    <form action="/muave" method="POST">
+                        <input type="hidden" value="<%=cumRap.id %>" name="cumrap">
+                        <input type="hidden" value="<%=rap.id %>" name="rap">
+                        <input type="hidden" value="<%=suatChieu.id %>" name="suatchieu">
+                        <input type="hidden" value="<%=idPhim %>" name="idphim">
+                        <button>Xác nhận</button>
+                    </form>
+                    
+                     </br>
+
+
+                <%}}%>
+
+        <% }}%>
+    
+
+<% }%>
+
+<%} %>
+
+
+<%- include('./footer'); -%>

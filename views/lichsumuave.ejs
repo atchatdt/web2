@@ -1,0 +1,73 @@
+<%- include('./header'); -%>
+<head>
+    <style>
+          table {
+            text-align: center;
+            border: 1px solid black;
+            width: 90%;
+        }
+        
+        th {
+            border: 1px solid black;
+            text-align: center;
+        }
+        
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<div class="bang-phim" style="width: 100%;  font-family: Arial, Helvetica, sans-serif;">
+        <h1>Lịch sử mua vé</h1>
+    <table>
+        <tr>
+            <th>Tên phim</th>
+            <th>Ngày đặt vé</th>
+            <th>Ghế</th>
+        </tr>
+        <% if( tbdc.length < 1 || mangLoc.length < 1 || ttoanBoVe.length < 1 || toanBoPhim.length < 1) {%>
+            <th>Rỗng</th>
+            <th>Rỗng</th>
+            <th>Rỗng</th>
+            <% } else{%>
+
+        <% for(let i=0; i < tbdc.length; i++) { %>
+           
+        <tr>    
+            <%for(let j = 0; j < mangLoc.length ; j++ ) {%>
+
+                <% if(mangLoc[j].id == tbdc[i].idsuatchieu) {%>
+
+                        <% for(let k = 0; k < toanBoPhim.length; k++) { %>
+
+                            <% if(toanBoPhim[k].id == mangLoc[j].idphim) { %>
+
+                                <td> <%= toanBoPhim[k].name %> </td>
+                                <% break;%>
+
+                                <% }%>
+                            <% }%>
+                    <% }%>
+                <% }%>
+           
+            <td> <%=tbdc[i].thoigiandatve %>  </td>
+             <%let tgtam = tbdc[i].thoigiandatve %>
+
+            <% for(let m=0 ; m < locVe.length; m=m+2) {%>
+                <%if(tbdc[i].iddatcho == locVe[m]) {%>
+                    <td> <%=locVe[m+1] %></td>
+                    <% }%>
+                
+                <%} %>
+            
+        </tr>
+
+        <% }%>
+        <% }%>
+    </table>
+</div>
+
+<%- include('./footer'); -%>

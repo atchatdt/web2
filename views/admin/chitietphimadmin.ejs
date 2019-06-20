@@ -1,0 +1,104 @@
+<%- include('./headeradmin'); -%>
+
+    <div class="bang-phim" style="width: 100%">
+        <h2>Danh sách chi tiết phim</h2>
+        <table>
+            <tr>
+                <th>Mã chi tiết</th>
+                <th>Tên phim</th>
+                <th>Đạo diễn</th>
+                <th>Diễn viên</th>
+                <th>Thể loại</th>
+                <th>Khỏi chiếu</th>
+                <th>Ngôn ngữ</th>
+                <th>Độ tuổi</th>
+                <th>Nội dung</th>
+                <th>Trailer</th>
+                <th>Chỉnh sửa</th>
+            </tr>
+            
+            <tr>
+                <form action="/admin/themchitietphim" method="POST"> 
+                    <td>
+                        <input class="w3-input " type="hidden" placeholder="Nhập mã rạp" required="" >
+                    </td>
+
+                    <td>
+                            <select name="idphim">
+                                <% for (let i=0; i < toanBoPhim.length; i++) {%>
+                                    <option id="idphim" value="<%=toanBoPhim[i].id %>"> <%=toanBoPhim[i].name %> </option>
+                                    <%} %>
+                            </select>
+                       
+                    </td>
+                    <td>
+                            <input class="w3-input " id="daodien" name="daodien" type="text" placeholder="Nhập tên đạo diễn" required="" oninvalid="this.setCustomValidity('Nhập tên đạo diễn')"
+                            oninput="setCustomValidity('')">
+                        </td>
+
+                    <td>
+                        <input class="w3-input "  id="dienvien" name="dienvien" type="text" placeholder="Nhập tên diễn viên" required="" oninvalid="this.setCustomValidity('Nhập tên diễn viên')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                        <input class="w3-input "  id="theloai" name="theloai" type="text" placeholder="Nhập thể loại" required="" oninvalid="this.setCustomValidity('Nhập the loại')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                        <input class="w3-input "  id="khoichieu" name="khoichieu" type="text" placeholder="Nhập ngày khởi chiếu" required="" oninvalid="this.setCustomValidity('Nhập ngày khỏi chiếu')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                        <input class="w3-input "  id="ngonngu" name="ngonngu" type="text" placeholder="Nhập ngôn ngữ" required="" oninvalid="this.setCustomValidity('Nhập ngôn ngữ')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                        <input class="w3-input "  id="dotuoi" name="dotuoi" type="text" placeholder="Nhập độ tuổi" required="" oninvalid="this.setCustomValidity('Nhập độ tuổi')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                            <input class="w3-input "  id="noidung" name="noidung" type="text" placeholder="Nhập nội dung" required="" oninvalid="this.setCustomValidity('Nhập nội dung')"
+                            oninput="setCustomValidity('')">
+                        </td>
+
+                        <td>
+                            <input class="w3-input "  id="trailer" name="trailer" type="text" placeholder="Nhập nội dung" required="" oninvalid="this.setCustomValidity('Nhập nội dung')"
+                            oninput="setCustomValidity('')">
+                        </td>
+
+                    <td><button type="submit" class="btn btn-primary">Thêm</button></td>
+                </form>
+            </tr>
+        <% for(let i = 0; i< toanBoChiTiet.length; i++){ 
+            var chiTietPhim = toanBoChiTiet[i] %>
+           <tr>
+                <td> <%=chiTietPhim.id %> </td>
+
+                <%for(let j = 0; j < toanBoPhim.length; j++ ){ 
+                    if(chiTietPhim.idphim == toanBoPhim[j].id)
+                  
+                    {%>
+                <td> <%=toanBoPhim[j].name %> </td>
+                <% }}%>
+
+                <td> <%=chiTietPhim.daodien %> </td>
+                <td>  <%=chiTietPhim.dienvien %> </td>
+                <td> <%=chiTietPhim.theloai %> </td>
+                <td> <%=chiTietPhim.khoichieu %> </td>
+                <td> <%=chiTietPhim.ngonngu %> </td>
+                <td> <%=chiTietPhim.dotuoi %></td>
+                <td> <%=chiTietPhim.noidung %> </td>
+                <td> <%=chiTietPhim.trailer %> </td>
+                <td><button onclick="window.location.href='/admin/xoachitietphim/<%=chiTietPhim.id %>'" type="submit" class="btn btn-danger">Xóa</button></td>   
+
+           </tr>
+           <%} %>
+        </table>
+    </div>
+
+    <%- include('./footeradmin'); -%>

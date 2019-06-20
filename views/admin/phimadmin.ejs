@@ -1,0 +1,74 @@
+<%- include('./headeradmin'); -%>
+
+    <div class="bang-phim" style="width: 100%">
+        <h2>Danh sách phim</h2>
+        <table>
+            <tr>
+                <th>Mã phim</th>
+                <th>Tên phim</th>
+                <th>Poster</th>
+                <th>Ngày công chiếu</th>
+                <th>Thời lượng</th>
+                <th>Thao tác</th>
+            </tr>
+            <tr>
+                <form action= "/admin/themphim" method="POST"  >
+
+                        <td>
+                            
+                        </td>
+                        
+                        <td>
+                            <input class="w3-input form-group" id ="name" name="name" placeholder="Tên phim"  type="text" required="" oninvalid="this.setCustomValidity('Nhập tên')"
+                            oninput="setCustomValidity('')">
+                        </td>
+
+                        <td>
+                        </td>
+
+                        <td>
+                                <input type="date" name="ngayCongChieu" >
+                        </td>
+
+                        <td>
+                            <input class="w3-input"  id="thoiluong" name="thoiluong"  type="text" placeholder="Nhập thời lượng" required="" oninvalid="this.setCustomValidity('Nhập thời lượng')"
+                            oninput="setCustomValidity('')">
+                        </td>
+
+                        <td>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
+                        </td>
+                </form>
+                
+            </tr>
+
+            <% for(let i=0; i< toanBoPhim.length; i++) {
+                var phim = toanBoPhim[i]%>
+            <tr>
+                <td> <%= phim.id %> </td>
+                <td> <%=phim.name %> </td>
+                <% if(im[i] == null){%>
+                    <td>
+                    <form action="/admin/themhinhanh" method="POST" enctype="multipart/form-data">
+                       
+                        
+                            <input class="w3-input " id="picture" name="picture"  type="file" placeholder="Thêm hình ảnh" >
+                            <input class="w3-input " id="id" name="id"  type="hidden" value="<%=phim.id %>" >
+                            <button type="submit" class="btn btn-primary">Thêm</button>
+                        
+                    </form>   
+                </td> 
+                    <% } else{%>
+                <td> 
+                    <img src="<%=im[i] %>" alt="<%=phim.name %>">    
+                </td>
+                <% }%>
+                <td> <%=phim.ngaycongchieu %> </td>
+                <td> <%=phim.thoiluong %> </td>
+                <td><button onclick="window.location.href='/admin/xoaphim/<%=phim.id%>'"  type="submit" class="btn btn-danger">Xóa</button></td>
+            </tr>
+           <%} %>
+        </table>
+    </div>
+
+    <%- include('./footeradmin'); -%>

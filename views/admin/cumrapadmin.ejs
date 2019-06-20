@@ -1,0 +1,51 @@
+<%- include('./headeradmin'); -%>
+
+    <div class="bang-phim" style="width: 100%">
+        <h2>Danh sách phim</h2>
+        <table>
+            <tr>
+                <th>Mã rạp</th>
+                <th>Tên rạp</th>
+                <th>Địa chỉ</th>
+                <th>Thao tác</th>
+            </tr>
+            
+            <tr>
+                <form action="/admin/themcumrap" method="POST"> 
+                    <td>
+                        <input class="w3-input " type="hidden" placeholder="Nhập mã rạp" required="" >
+                    </td>
+
+                    <td>
+                        <input class="w3-input " id="tenrap" name="tenrap" type="text" placeholder="Nhập tên rạp" required="" oninvalid="this.setCustomValidity('Nhập tên')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                        <input class="w3-input "  id="diachi" name="diachi" type="text" placeholder="Nhập địa chỉ" required="" oninvalid="this.setCustomValidity('Nhập địa chỉ')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td><button type="submit" class="btn btn-primary">Thêm</button></td>
+                </form>
+            </tr>
+        
+            <% for( let i = 0 ; i < toanBoCumRap.length; i++) {
+                var cumrap = toanBoCumRap[i] %>
+                <tr>
+                    <td>
+                        <%=cumrap.id %>
+                    </td>
+                    <td>
+                        <%=cumrap.tenrap %>
+                    </td>
+                    <td>
+                        <%=cumrap.diachi %>
+                    </td>
+                    <td><button onclick="window.location.href='/admin/xoacumrap/<%=cumrap.id %>'" type="submit" class="btn btn-danger">Xóa</button></td>
+                </tr>
+                <%} %>
+        </table>
+    </div>
+
+    <%- include('./footeradmin'); -%>

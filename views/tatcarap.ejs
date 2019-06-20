@@ -1,0 +1,56 @@
+<%- include('./header'); -%>
+
+<head>
+        <style>
+              table {
+                text-align: center;
+                border: 1px solid black;
+                width: 90%;
+            }
+            
+            th {
+                border: 1px solid black;
+                text-align: center;
+            }
+            
+            td {
+                border: 1px solid black;
+                text-align: center;
+            }
+            table, th, td{
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+
+
+
+    
+<div class="bang-phim" style="width: 100%;  font-family: Arial, Helvetica, sans-serif;">
+        <h1>Tất cả rạp</h1>
+    <table>
+        <tr>
+            <th>Tên cụm</th>
+            <th>Tên rạp</th>
+        </tr>
+
+       <% for(let i=0; i< mangCumRap.length; i++ ) {%>
+            <tr>
+                <td style="color: red"> <%=mangCumRap[i].tenrap %> </td>
+                <td></td>
+            </tr>
+            <%for(let j=0; j < mangCum.length; j++) {%>
+                <% if(mangCumRap[i].id == mangCum[j].idcumrap) {%>
+                         <tr>
+                            <td></td>
+                            <td> <%=mangCum[j].name %>  </td>
+                        </tr>
+                    <% }%>
+                <% }%>
+        <% }%>
+       
+    </table>
+</div>
+
+
+<%- include('./footer'); -%>

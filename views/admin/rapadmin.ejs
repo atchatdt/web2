@@ -1,0 +1,77 @@
+<%- include('./headeradmin'); -%>
+
+
+<div class="bang-phim" style="width: 100%">
+    <h2>Rạp Phim</h2>
+    </br>
+
+    <table>
+        <tr>
+            <th>Tên</th>
+            <th>Cụm Rạp</th>
+            <th>Loại</th>
+            <th>Ngang</th>
+            <th>Dọc</th>
+            <th>Chỉnh Sửa</th>
+        </tr>
+        <tr>
+            <form action="/admin/themrap" method="POST">
+                <td>
+                    <input class="w3-input" id="tenrap" name="tenrap" type="text" placeholder="Tên rạp" required="" oninvalid="this.setCustomValidity('Nhập tên')"
+                    oninput="setCustomValidity('')">
+                </td>
+
+                <td>
+                        <select name="idcumrap">
+                            <% for (let i=0; i < toabBoCumRap.length; i++) {%>
+                                <option id="idcumrap" value="<%=toabBoCumRap[i].id %>"> <%=toabBoCumRap[i].tenrap %> </option>
+                                <%} %>
+                        </select>
+                   
+                </td>
+
+                <td>
+                    <input class="w3-input " id="loai" name="loai" type="text" placeholder="Nhập loại" required="" oninvalid="this.setCustomValidity('Nhập loại')"
+                    oninput="setCustomValidity('')">
+                </td>
+
+                <td>
+                    <input class="w3-input " id="ngang" name="ngang" type="text" placeholder="Ngang" required="" oninvalid="this.setCustomValidity('Nhập chiều ngang')"
+                    oninput="setCustomValidity('')">
+                </td>
+                <td>
+                    <input class="w3-input " id="doc" name="doc" type="text" placeholder="Dọc" required="" oninvalid="this.setCustomValidity('Nhập chiều dọc')"
+                    oninput="setCustomValidity('')">
+                </td>
+
+                <td><button type="submit" class="btn btn-primary">Thêm</button></td>
+            </form>
+        </tr>
+
+        <% for( let i = 0 ; i < toanBoRap.length; i++) {
+            var rap = toanBoRap[i] %>
+
+        <tr>
+            <td> <%=rap.name %> </td>
+
+            <% for(let j=0; j< toabBoCumRap.length;j++ ) {%>
+
+            <% if(rap.idcumrap == toabBoCumRap[j].id){ %>
+            <td> <%=toabBoCumRap[j].tenrap %> </td>
+            <%} %>
+            <%}%>
+            <td> <%=rap.loai %> </td>
+            <td> <%=rap.ngang %> </td>
+            <td> <%=rap.doc %> </td>
+            <td><button onclick="window.location.href='/admin/xoarap/<%=rap.id %>'" type="submit"
+                    class="btn btn-danger">Xóa</button></td>
+
+
+        </tr>
+        <% }%>
+    </table>
+</div>
+
+
+
+<%- include('./footeradmin'); -%>

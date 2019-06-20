@@ -1,0 +1,39 @@
+<%- include('./header'); -%>
+
+
+    <div id="messages_product_view"></div>
+    <div class="product-view">
+        <div class="product-essential">
+            <div class="page-title product-view">
+                <span class="h1">Thông tin người dùng</span>
+            </div>
+
+            <div class="avatar" align="center">
+                <div class="product-image product-image-zoom">
+                    <div class="product-image-gallery">
+                        <img id="image-main" class="gallery-image visible" src="<%=im%>" alt=" <%=user.name %>" title=" <%=user.name %>" />
+                    </div>
+                </div>
+                <form action="/capnhatthongtin" method="GET" style="margin-top: 4px">
+                    <button>Cập nhật</button>
+                </form>
+            </div>
+
+            <div class="profile">
+                <ul><label><strong>Email:</strong></label>
+                    <%=user.email %>
+                </ul>
+                <ul><label><strong>Tên:</strong></label>
+                    <%=user.name %>
+                </ul>
+                <ul><label><strong>Số điện thoại:</strong></label>
+                    <%=user.sdt%>
+                </ul>
+
+            </div>
+
+
+
+        </div>
+
+        <%- include('./footer'); -%>

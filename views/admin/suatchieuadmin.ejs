@@ -1,0 +1,84 @@
+<%- include('./headeradmin'); -%>
+
+<div class="bang-phim" style="width: 100%">
+    <h2>Suất chiếu</h2>
+</br>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Phim</th>
+            <th>Rạp</th>
+            <th>Giờ Bắt Đầu</th>
+            <th>Giờ Kết Thúc</th>
+            <th>Giá vé</th>
+            <th>Chỉnh Sửa</th>
+          </tr>
+        <tr>
+                <form action="/admin/themsuat" method="POST"> 
+                    <td>
+                        <input class="w3-input " type="hidden" placeholder="Nhập mã rạp" required="" >
+                    </td>
+
+                    <td>
+                            <select name="idphim">
+                                <% for (let i=0; i < toanBoPhim.length; i++) {%>
+                                    <option id="idphim" value="<%=toanBoPhim[i].id %>"> <%=toanBoPhim[i].name %> </option>
+                                    <%} %>
+                            </select>
+                       
+                    </td>
+
+                     <td>
+                            <select name="idrap">
+                                <% for (let i=0; i < toanBoRap.length; i++) {%>
+                                    <option id="idrap" value="<%=toanBoRap[i].id %>"> <%=toanBoRap[i].name %> </option>
+                                    <%} %>
+                            </select>
+                       
+                    </td>
+                     <td>
+                        <input class="w3-input " id="bd" name="bd" type="text" placeholder="Nhập giờ bắt đầu" required="" oninvalid="this.setCustomValidity('Nhập giờ bắt đầu')"
+                        oninput="setCustomValidity('')">
+                    </td>
+                    
+                    <td>
+                        <input class="w3-input " id="kt" name="kt" type="text" placeholder="Nhập giờ kết thúc" required="" oninvalid="this.setCustomValidity('Nhập kết thúc')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td>
+                        <input class="w3-input " id="giave" name="giave" type="number" placeholder="Nhập giá " required="" oninvalid="this.setCustomValidity('Nhập giá')"
+                        oninput="setCustomValidity('')">
+                    </td>
+
+                    <td><button type="submit" class="btn btn-primary">Thêm</button></td>
+                </form>
+        </tr>  
+          <% for(let i= 0; i < toanBoSuatChieu.length; i++) {
+            var suatChieu = toanBoSuatChieu[i] %>  
+        <tr>
+            <td> <%=suatChieu.id %></td>
+
+            <% for(let j=0; j< toanBoPhim.length; j++){ %>
+                <% if(suatChieu.idphim == toanBoPhim[j].id){%>
+                <td> <%=toanBoPhim[j].name %></td>
+            <% }}%>
+            
+            <% for(let k=0 ; k < toanBoRap.length; k++){ %>
+                <%if(suatChieu.idrap == toanBoRap[k].id){ %>
+                 <td> <%=toanBoRap[k].name %></td>
+            <% }}%>
+
+            <td> <%=suatChieu.batdau %></td>
+            <td> <%=suatChieu.ketthuc %></td>  
+            <td> <%=suatChieu.giave %></td>  
+            <td><button onclick="window.location.href='/admin/xoasuat/<%=suatChieu.id %>'" type="submit" class="btn btn-danger">Xóa</button></td>   
+        </tr>  
+        <%} %> 
+    </table>
+</div>
+
+    
+
+<%- include('./footeradmin'); -%>

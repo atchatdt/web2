@@ -1,0 +1,71 @@
+<%- include('./header'); -%>
+
+
+
+<h1>Đặt chỗ</h1>
+
+<form action="chonve" method="POST">
+<p id="content" name="gheChon"></p>
+<input id="xacnhan" type="hidden" name="xacnhan" >
+<input type="hidden" name="cumrap" value="<%=idCum %>">
+<input type="hidden" name="rap" value="<%=idRap %>">
+<input type="hidden" name="suatchieu" value="<%=idSuat %>">
+<input type="hidden" name="idphim" value="<%=idPhim%>">
+<input type="text" placeholder="Ghế bạn muốn loại bỏ(cách nhau bằng dấu ',')" style="width: 30%" name="xoaBo">
+<button>Xác nhận</button>
+</form>
+
+<% var dem = 1;
+for(let i=0; i< Rap.ngang; i++) {%>
+    
+    <% for(let j=0; j< Rap.doc; j++) {%>
+
+            <% for(let k=0; k < choDaDat.length; k++ ){%>
+                
+            <%if( dem == choDaDat[k]){ %>
+                <%if(dem >(Rap.ngang * Rap.doc)) break; %> 
+                <button style="width: 50px; height: 50px; background-color:red;" disabled id="<%=dem %>" onclick="myFunction(this.id,this)"> <%=dem %></button>
+               
+                <% if(dem % Rap.ngang == 0){%>
+                </br>
+                    <% }%>
+                    <%dem++; %>
+              
+
+            <% }}%>        
+            <%if(dem >(Rap.ngang * Rap.doc)) break; %> 
+                <button style="width: 50px; height: 50px; background-color:lightblue;" id="<%=dem %>"onclick="myFunction(this.id,this)" > <%=dem %></button>
+                
+                <% if(dem % Rap.ngang == 0){%>
+                </br>
+                    <% }%>
+
+                    <%dem++; %>
+              
+
+         <% }%>
+               <%if(dem >(Rap.ngang * Rap.doc)) break; %> 
+    <%} %>
+</br>
+
+
+<script>
+    var noidung = '';
+
+    function myFunction(id,color){
+        
+        var content = document.getElementById('content');
+
+        noidung = noidung + id +',';
+
+    content.innerHTML = noidung;
+
+         document.getElementById('xacnhan').value = noidung;
+
+         color.style.backgroundColor = 'blue';
+         color.disabled = true;
+
+    }
+</script>
+
+<%- include('./footer'); -%>

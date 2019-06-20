@@ -1,0 +1,44 @@
+<%- include('./header'); -%>
+
+
+<head>
+        <style>
+              table {
+                text-align: center;
+                border: 1px solid black;
+                width: 90%;
+            }
+            
+            th {
+                border: 1px solid black;
+                text-align: center;
+            }
+            
+            td {
+                border: 1px solid black;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    
+
+<div class="bang-phim" style="width: 100%;  font-family: Arial, Helvetica, sans-serif;">
+        <h1>Tất cả các cụm rạp</h1>
+    <table>
+        <tr>
+            <th>Tên cụm</th>
+            <th>Địa chỉ</th>
+        </tr>
+
+        <% for(let i = 0; i < mangCumRap.length; i++) {%>
+            <tr>
+                <td><%=mangCumRap[i].tenrap %></td>
+                <td> <%=mangCumRap[i].diachi %></td>
+            </tr>
+            <% }%>
+       
+    </table>
+</div>
+
+<%- include('./footer'); -%>

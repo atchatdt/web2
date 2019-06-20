@@ -1,0 +1,22 @@
+
+<%- include('../header'); -%>
+
+<h1>Đổi mật khẩu</h1>
+       
+<form action="/auth/doimatkhau" method="POST">
+    <div class="form-group">
+        <p><strong>Mật khẩu cũ</strong></p>
+        <input placeholder="Mật khẩu cũ" id = "mkc" name="mkc" type="password" required="">
+    </div>
+    <div class="form-group">
+        <p><strong>Mật khẩu mới</strong></p>
+        <input placeholder="Mật khẩu mới" id ="mkm" name="mkm" type="password" required="">
+    </div>
+    <div class="dn">
+        <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </div>
+
+</form>
+
+
+<%- include('../footer'); -%>

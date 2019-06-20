@@ -1,0 +1,82 @@
+<%- include('./header'); -%>
+
+
+<div class="infodetail">
+<div class="breadcrumbs" itemprop="breadcrumb">
+    <ul>
+        <li class="home">
+            <strong><%=name.name %></strong>
+        </li>
+    </ul>
+</div>
+
+<div id="messages_product_view"></div>
+<div class="product-view">
+    <div class="product-essential">
+        <div class="page-title product-view">
+            <span class="h1">Nội Dung Phim</span>
+        </div>
+
+        <div class="product-img-box">
+            <div class="product-image product-image-zoom">
+                <div class="product-image-gallery">
+                    <img id="image-main" class="gallery-image visible" src="<%=im %>" alt="<%=name.name %>"
+                        title="<%=name.name %>" />
+                </div>
+            </div>
+            <button type="button" title="Mua vé" class="fa fa-phone btn btn-danger " style="margin-left: 50px;margin-top: 20px" onclick="window.location.href='/muave/<%=name.id%>'">
+                Mua vé 
+            </button>
+
+
+        </div>
+
+        <div class="product-shop">
+            <div class="video">
+                <iframe width="450" height="250" src=" <%=chitietphim.trailer %>">
+                </iframe>
+
+            </div>
+
+            <ul><label><strong>Đạo diễn:</strong></label>
+                <%=chitietphim.daodien %>
+            </ul>
+            <ul><label><strong>Diễn viên:</strong></label>
+                <%=chitietphim.dienvien %>
+            </ul>
+            <ul><label><strong>Thể loại:</strong></label>
+                <%=chitietphim.theloai %>
+            </ul>
+            <ul><label><strong>Thời lượng:</strong></label>
+                <%=name.thoiluong %>
+            </ul>
+            <ul><label><strong>Khởi chiếu:</strong></label>
+                <%=chitietphim.khoichieu %>
+            </ul>
+           
+            <ul><label><strong>Ngôn ngữ:</strong></label>
+                <%=chitietphim.ngonngu %>
+            </ul>
+            <ul><label><strong>Rated:</strong></label>
+                <%=chitietphim.dotuoi %>
+            </ul>
+
+
+
+        </div>
+<div class="thongtinchitietphim">
+        <h2 style="margin-top: 50px">Chi tiết</h2>
+    
+        <div class="std">
+            <% for(let i=0; i< toanBoChiTiet.length; i++){%>
+            <%=toanBoChiTiet[i].noidung%>
+            </br>
+        </br>
+    </br>
+            <% }%>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <%- include('./footer'); -%>

@@ -1,0 +1,29 @@
+<%- include('./header'); -%>
+
+
+    <body>
+        <h1>Thông tin cá nhân</h1>
+       
+        <form action="/capnhatthongtin" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                    <label for="picture">Hình ảnh cá nhân</label>
+                    <input type="file" name="picture" id="picture">
+            </div>
+                  
+            <div class="form-group">
+                <p><strong>Tên</strong></p>
+                <input placeholder="họ tên" id ="name" name="name" type="text" required="" value="<%=user.name%>">
+            </div>
+            <div class="form-group">
+                    <p><strong>Số điện thoại</strong></p>
+                    <input placeholder="số diện thoại" id ="sdt" name="sdt" type="text" required="" value="<%=user.sdt%>">
+                </div>
+            <div class="dn">
+                <button type="submit" class="btn btn-primary">Xác nhận</button>
+            </div>
+
+        </form>
+    </body>
+
+    <%- include('./footer'); -%>

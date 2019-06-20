@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+        .video {
+            text-align: right;
+            float: right;
+
+        }
+
+        .product-view {
+            padding-bottom: 40px;
+            text-align: left;
+        }
+
+        .breadcrumbs {
+            text-align: left;
+        }
+
+        .product-shop {
+            float: right;
+            text-align: left;
+            width: 80%;
+            height: 300px;
+            padding: 1px;
+        }
+
+        .product-img-box {
+            float: left;
+            width: 20%;
+            height: 280 px;
+        }
+
+        div {
+            background: darkgray;
+        }
+
+        .form-group p {
+            text-align: left;
+            margin-left: 300px;
+            background-color: b3ffd9;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 50%;
+            padding: 5px 5px;
+        }
+
+        p {
+            background-color: b3ffd9;
+        }
+
+        i {
+            color: red;
+        }
+
+        .btn-group .dropdown-menu .dropdown-item {
+            color: blue;
+
+        }
+
+        div {
+            background-color: b3ffd9;
+        }
+
+        th {
+            border: 1px solid black;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-right: 150px;
+            margin-left: 80px;
+            background-color: 3385ff;
+        }
+
+
+
+        .profile {
+            float: right;
+            text-align: left;
+            width: 70%;
+            height: 250px;
+            padding: 1px;
+        }
+
+        .avatar {
+            align-items: center;
+            float: left;
+            width: 30%;
+        }
+
+        .tieude {
+            border-top: 3px solid black;
+            padding-top: 15px;
+        }
+        .thongtinchitietphim{
+            padding-top: 310px;
+        }
+        .dan14{
+            padding-bottom: 0%;
+        }
+    </style>
+    <title>Rạp chiếu phim</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <!-- Brand -->
+                <a class="navbar-brand" href="/">NHÓM 14</a>
+
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <form class="form-inline" action="/timkiem" method="GET">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Tìm Kiếm" name="q">
+                        <button class="btn btn-success" type="submit">Tìm Kiếm </button>
+                    </form>
+                </nav>
+            </ul>
+        </nav>
+
+        <br>
+        <center>
+            <div class="container">
+
+                <h2 style="font-size: 24"><i>Chào mừng bạn đến với rạp chiếu phim Nhóm 14!</i></h2>
+            </div>
+
+            <div class="container">
+                
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Phim</button>
+                                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown">
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/tatcacacphim">Tất cả các phim</a>
+
+                                    </div>
+                                </div>
+                            </th>
+
+                            <th>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Rạp</button>
+                                    <button type="button"
+                                        class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown">
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/tatcacumrap">Tất cả cụm rạp</a>
+                                        <a class="dropdown-item" href="/tatcarap">Tất cả các rạp</a>
+
+                                    </div>
+                                </div>
+                            </th>
+
+                            <th>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Thành Viên</button>
+                                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown">
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <%if(currentUser){%>
+                                        <a class="dropdown-item" href="/thongtincanhan">
+                                            <%=currentUser.name%>
+                                        </a>
+                                        <% if(admin == 1) {%>
+                                        <a class="dropdown-item" href="/admin">Vào admin</a>
+                                        <% }%>
+                                        <a class="dropdown-item" href="/thongtincanhan">Thông tin cá nhân</a>
+                                        <a class="dropdown-item" href="/auth/doimatkhau">Đổi mật khẩu</a>
+                                        <a class="dropdown-item" href="/lichsumuave">Lịch sử mua vé</a>
+                                        <a class="dropdown-item" href="/auth/logout"> Đăng xuất</a>
+                                        <% } else {%>
+                                        <a class="dropdown-item" href="/auth/login">Đăng nhập</a>
+                                        <a class="dropdown-item" href="/auth/register">Đăng ký</a>
+                                        <% }%>
+                                    </div>
+                                </div>
+                            </th>
+
+                        </tr>
+                    </thead>
+                </table>
+
+
+
+            </div>

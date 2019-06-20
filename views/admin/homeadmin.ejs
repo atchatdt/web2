@@ -1,0 +1,76 @@
+<%- include('./headeradmin'); -%>
+
+<div class="doanh-thu" style="width: 100%">
+    
+    <h1>Tổng doanh thu theo cụm</h1>
+
+    <table>
+        <tr>
+            <th>Tên cụm</th>
+            <th>Doanh thu</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Xác nhận</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+
+            <form action="/admin/doanthucumrap" method="POST">
+                <td><input type="date" name="begin" ></td>
+                <td><input type="date" name="end" ></td>
+                <td> <input type="submit" value="Xem kết quả"></td>
+            </form>
+        </tr>
+
+        <%if(doanThu.length >0){ %>
+        <% for(let i =0; i< doanThu.length; i=i+4){ %>
+        <tr>
+            <td> <%=doanThu[i] %>  </td>
+            <td> <%=doanThu[i+1] %></td>
+            <td> <%=doanThu[i+2] %></td>
+            <td><%=doanThu[i+3] %></td>
+            <td></td>
+        </tr>
+        <%}} %>
+    </table>
+
+    <h1>Tổng doanh thu theo phim </h1>
+
+
+    <table>
+            <tr>
+                <th>Tên phim</th>
+                <th>Doanh thu</th>
+                <th>Thời gian bắt đầu</th>
+                <th>Thời gian kết thúc</th>
+                <th>Xác nhận</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+    
+                <form action="/admin/doanthuphim" method="POST">
+                    <td><input type="date" name="beginmovie" ></td>
+                    <td><input type="date" name="endmovie" ></td>
+                    <td> <input type="submit" value="Xem kết quả"> </td>
+                </form>
+            </tr>
+            <%if(doanhThuPhim.length >0){ %>
+                <% for(let i =0; i< doanhThuPhim.length; i=i+4){ %>
+                <tr>
+                    <td> <%=doanhThuPhim[i] %>  </td>
+                    <td> <%=doanhThuPhim[i+1] %></td>
+                    <td> <%=doanhThuPhim[i+2] %></td>
+                    <td><%=doanhThuPhim[i+3] %></td>
+                    <td></td>
+                </tr>
+                <%}} %>
+          
+        </table>
+
+
+   
+</div>
+
+<%- include('./footeradmin'); -%>

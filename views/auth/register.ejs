@@ -1,0 +1,55 @@
+
+<%- include('../header'); -%>
+
+
+
+<div class="container" text-align="left">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1><span class="fa fa-sign-in"></span> Đăng Ký </h1>
+        <!-- hiển thị mọi tin nhắn được trả lại từ server cho việc đăng ký -->
+       
+
+        <% if(errors.length > 0) {%>
+
+            <% for(let i = 0 ;i < errors.length; i++){%>
+              <div class="alert alert-danger" role="alert">
+                <%=errors[i] %>
+              </div>
+              <% }%>
+            <% }%>
+
+        <!-- LOGIN FORM -->
+        <form action="/auth/register" name="register" method="POST" align="left">
+            <div class="form-group">
+                <label for="Ten"><strong>Tên</strong> <font color="red">*</font> </label>
+                <input type="HoTen" class="form-control" id="name" placeholder="Họ và Tên" name="name" value="<%=value ? value.name : "" %>" > 
+            </div>
+
+            <div class="form-group">
+                 <label for="Email"><strong>Địa Chỉ Email (Tên Đăng Nhập)</strong> <font color="red">*</font></label>
+                 <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="<%=value ? value.email : "" %>">
+             </div>
+             
+            <div class="form-group">
+                <label for="Password"><strong>Mật Khẩu</strong> <font color="red">*</font></label>
+                <input type="Password" class="form-control" id="password" placeholder="Mật Khẩu" name="password" >
+            </div>
+
+            <div class="form-group">
+              <label for="sdt"><strong>Số Điện Thoại</strong> <font color="red">*</font></label>
+              <input type="text" class="form-control" id="sdt" placeholder="Số Điện Thoại" name="sdt" value="<%=value ? value.sdt : "" %>">
+          </div>
+
+            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            <font color="red">* Phải nhập thông tin.</font>
+        </form>
+        
+        <hr>
+        <p>Bạn đã có tài khoản ? <a href="/auth/login">Login</a></p>
+        <p>Trang Chủ <a href="/">home</a>.</p>
+        
+    </div>
+</div>
+
+
+<%- include('../footer'); -%>
